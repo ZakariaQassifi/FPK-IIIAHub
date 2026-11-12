@@ -1,0 +1,111 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Monochrome (black & white) palette */
+  --color-apple-bg: #ffffff;
+  --color-apple-card: #ffffff;
+  --color-apple-border: #d4d4d4;
+  --color-apple-border-hover: #000000;
+
+  --color-apple-text-primary: #000000;
+  --color-apple-text-secondary: #6e6e6e;
+  --color-apple-text-muted: #a1a1a1;
+
+  --color-accent: #000000;
+  --color-accent-hover: #1f1f1f;
+  --color-accent-soft: #f5f5f5;
+
+  /* Sonder accent — a deliberate trace of blue, used sparingly */
+  --color-signal: #007aff;
+  --color-signal-hover: #0062cc;
+  --color-signal-soft: #e8f2ff;
+  --color-signal-light: #e3f2fd;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth antialiased;
+  }
+
+  body {
+    @apply min-h-screen bg-apple-bg text-apple-text-primary;
+  }
+
+  * {
+    @apply selection:bg-signal selection:text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl font-bold leading-[1.1] sm:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl font-bold leading-[1.15] sm:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl font-bold leading-[1.2] sm:text-3xl;
+  }
+
+  .hairline {
+    border-width: 1px;
+    border-color: hsl(var(--border) / 0.5);
+  }
+
+  .editorial-lead {
+    @apply text-lg leading-relaxed text-apple-text-secondary max-w-xl;
+  }
+
+  .section-header {
+    @apply flex items-center justify-between gap-6 mb-10;
+  }
+}
+
+@layer components {
+  .apple-card {
+    @apply rounded-2xl border border-apple-border bg-apple-card p-8 shadow-sm transition-all duration-200 hover:border-signal-light hover:bg-signal-light hover:shadow-md;
+  }
+
+  .apple-btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-signal-light bg-signal-light px-6 py-3 text-sm font-semibold text-apple-text-primary shadow-sm transition-all hover:brightness-95 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .apple-btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-apple-border bg-transparent px-6 py-3 text-sm font-semibold text-apple-text-primary transition-all hover:border-signal-light hover:bg-signal-light/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full border px-3 py-0.5 text-xs font-semibold uppercase tracking-wider transition-colors;
+  }
+
+  .badge-cours {
+    @apply border-accent-soft bg-accent/10 text-accent;
+  }
+
+  .badge-td_tp {
+    @apply border-accent-soft bg-accent/10 text-accent;
+  }
+
+  .badge-exams {
+    @apply border-accent-soft bg-accent/10 text-accent;
+  }
+
+  .badge-corrections {
+    @apply border-accent-soft bg-accent/10 text-accent;
+  }
+
+  .badge-licence {
+    @apply border-apple-border bg-apple-bg text-apple-text-secondary;
+  }
+
+  .badge-master {
+    @apply border-accent-soft bg-accent/10 text-accent;
+  }
+}

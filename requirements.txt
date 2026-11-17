@@ -1,3 +1,7 @@
-# Root requirements file detected by Vercel's Python runtime.
-# The actual dependency list lives in backend/requirements.txt.
--r backend/requirements.txt
+fastapi>=0.115,<1.0
+uvicorn[standard]>=0.34,<1.0
+pydantic-settings>=2.7,<3.0
+supabase>=2.13,<3.0
+python-multipart>=0.0.20,<1.0
+bcrypt>=4.1,<5.0
+pyjwt[crypto]>=2.8,<3.0

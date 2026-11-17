@@ -1,5 +1,13 @@
-const API_URL = (
-  import.meta.env.VITE_API_URL as string | undefined
+/**
+ * Base URL of the FastAPI backend.
+ *
+ * - Development: VITE_API_URL (http://localhost:8000) or a sane default.
+ * - Production: relative URLs (`/api/...`) so the same-origin Vercel
+ *   deployment routes requests to the FastAPI serverless function.
+ */
+export const API_URL = (
+  (import.meta.env.VITE_API_URL as string | undefined) ??
+  (import.meta.env.PROD ? '' : 'http://localhost:8000')
 )?.replace(/\/$/, '')
 
 export class ApiError extends Error {
@@ -23,7 +31,7 @@ interface ApiFetchInit extends Omit<RequestInit, 'headers'> {
 }
 
 export async function apiFetch<T>(path: string, init: ApiFetchInit = {}): Promise<T> {
-  if (!API_URL) {
+  if (!API_URL && import.meta.env.DEV) {
     throw new ApiNotConfiguredError()
   }
 

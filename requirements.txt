@@ -1,0 +1,3 @@
+# Root requirements file detected by Vercel's Python runtime.
+# The actual dependency list lives in backend/requirements.txt.
+-r backend/requirements.txt

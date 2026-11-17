@@ -1,4 +1,4 @@
-import { apiFetch } from '@/api/client'
+import { API_URL, apiFetch } from '@/api/client'
 
 export interface AdminLoginRequest {
   username: string
@@ -23,9 +23,6 @@ export async function adminLogin(
 
 export async function adminMe(token: string): Promise<{ sub: string; role: string }> {
   const headers = new Headers({ Authorization: `Bearer ${token}` })
-  const API_URL = (
-    import.meta.env.VITE_API_URL as string | undefined
-  )?.replace(/\/$/, '')
   const response = await fetch(`${API_URL}/api/v1/admin/me`, { headers })
   if (!response.ok) {
     throw new Error('Failed to fetch admin profile')

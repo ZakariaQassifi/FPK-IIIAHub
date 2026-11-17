@@ -62,16 +62,18 @@ async def root() -> dict[str, str]:
     return {
         "name": settings.app_name,
         "docs": "/docs",
-        "health": "/health",
+        "health": "/api/health",
     }
 
 
 @app.get("/health", tags=["meta"])
+@app.get("/api/health", tags=["meta"])
 async def health() -> dict[str, str]:
     return {"status": "ok", "environment": settings.environment}
 
 
 @app.get("/health/detailed", tags=["meta"])
+@app.get("/api/health/detailed", tags=["meta"])
 async def health_detailed() -> dict:
     """Report the database connectivity and the current configuration."""
     ok, message = check_supabase_connectivity()
